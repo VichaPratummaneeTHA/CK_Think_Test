@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Buttons = ({
-  text, size, color, type, variant, onClick
+  text, size, color, type, variant, onClick, ...other
 }) => {
   const classes = useStyles();
   return (
@@ -22,6 +22,7 @@ const Buttons = ({
       color={color ||'primary'}
       onClick={onClick}
       type={type}
+      {...other}
       classes={{root: classes.root, label: classes.label}}
     >
       {text}

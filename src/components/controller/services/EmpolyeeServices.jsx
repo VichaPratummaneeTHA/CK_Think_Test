@@ -16,13 +16,30 @@ export const insertEmployee = (data) => {
     data['id'] = generateEmployeeId()
     employees.push(data)
     localStorage.setItem(KEYS.employees, JSON.stringify(employees))
+    
+}
+
+export const updateEmployee = (data) => {
+
+    let employees = getAllEmployees()
+    let recordIndex = employees.findIndex(emp => emp.id === data.id)
+
+    employees[recordIndex] = {...data}
+    localStorage.setItem(KEYS.employees, JSON.stringify(employees))
+}
+
+export const deleteEmployee = (id) => {
+
+    let employees = getAllEmployees()
+    employees = employees.filter(emp => emp.id !== id)
+
+    localStorage.setItem(KEYS.employees, JSON.stringify(employees))
 }
 
 export const generateEmployeeId = () => {
   if(localStorage.getItem(KEYS.employeesId) === null){
     localStorage.setItem(KEYS.employeesId, '0')
   }
-
   var id = parseInt(localStorage.getItem(KEYS.employeesId))
   localStorage.setItem(KEYS.employeesId, (++id).toString())
 

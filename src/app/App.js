@@ -36,19 +36,20 @@ const useStyles = makeStyles({
     width: '100%'
   }
 });
+
 const App = () => {
 
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-    <Fragment>
-      <SideBar />
-      <div className={classes.appMain}>
-        <Header />
-        <Employees />
-      </div> 
-      <CssBaseline />
-    </Fragment>
+        <Fragment>
+          <SideBar />
+          <div className={classes.appMain}>
+            <Header />
+            <Employees />
+          </div> 
+          <CssBaseline />
+        </Fragment>
     </ThemeProvider>
   )
 }

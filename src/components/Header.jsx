@@ -19,10 +19,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   btnRoot: {
-    backgroundColor: 'green',
+    backgroundColor: '#7986cb',
   },
   btnLabel: {
-    backgroundColor: 'red',
+    backgroundColor: '#16c79a',
   }
 }));
 
@@ -42,13 +42,14 @@ const Header = () => {
           </Grid>
           <Grid item sm></Grid>
           <Grid item>
+
             <IconButton classes={{root: classes.btnRoot, label: classes.btnLabel}}>
-                <Badge badgeContent={4} color='secondary'>
+                <Badge badgeContent={1} color='secondary'>
                     <NotificationsNone fontSize='small'/>
                 </Badge>
             </IconButton>
             <IconButton>
-                <Badge badgeContent={3} color='primary'>
+                <Badge badgeContent={1} color='primary'>
                     <ChatBubble fontSize='small'/>
                 </Badge>
             </IconButton>
@@ -57,6 +58,7 @@ const Header = () => {
                     <PowerSettingsNew fontSize='small' color='primary'/>
                 </Badge>
             </IconButton>
+            
           </Grid>
         </Grid>
       </Toolbar>

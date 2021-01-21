@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Grid, makeStyles} from '@material-ui/core'
 
 //Componet
@@ -42,9 +42,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EmployeeForm = () => {
-
-  
+/* Default Component */
+const EmployeeForm = ({
+  addOrEdit, recordForEdit
+}) => {
 
   const classes = useStyles();
 
@@ -62,15 +63,20 @@ const EmployeeForm = () => {
     return Object.values(tempInput).every(x => x === "");
   }
 
-  const {values, errors, setErrors, handleInputChange, resetForm} = UseForm(initalValues, true, validate);
+  const {values, setValues, errors, setErrors, handleInputChange, resetForm} = UseForm(initalValues, true, validate);
 
   const handleSubmit = (event) => {
     if(validate()){
-      window.alert('Completed Submit ...')
-      EmpolyeeServices.insertEmployee(values);
+      // window.alert('Completed Submit ...')
+      // EmpolyeeServices.insertEmployee(values);
+      // resetForm();
+      addOrEdit(values, resetForm)
     }
     event.preventDefault();
   }
+
+  useEffect(() => { if(recordForEdit !== null) setValues({...recordForEdit})}, [setValues, recordForEdit])
+
   return (
     <Form onSubmit={event => handleSubmit(event)}>
       <Grid container>
